@@ -1,0 +1,17 @@
+{
+  "name": "gr-homework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "db-old:up": "docker run -p 5432:5432 guaranteedrate/homework-pre-migration:1607545060-a7085621",
+    "db-new:up": "docker run -p 5433:5432 guaranteedrate/homework-post-migration:1607545060-a7085621",
+    "db:up": "(npm run db-old:up &) && (npm run db-new:up &)"
+  },
+  "author": "Myles Murphy",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.8.0"
+  }
+}
