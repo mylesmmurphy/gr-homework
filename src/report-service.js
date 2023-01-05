@@ -12,6 +12,7 @@ async function analyzeAndGenerateReport() {
   const newClient = await dao.getDBClient(newDBConfig);
 
   // Grab all of the records from each database
+  // Note: Could be ran in paralle using Promise.all to increase performance
   const oldAccounts = await dao.getAllAccounts(oldClient);
   const newAccounts = await dao.getAllAccounts(newClient);
 
