@@ -11,8 +11,8 @@ The goal of this project is to identify missing, corrupted, and new records with
 
 ## Installation
 
-1. `$ git clone https://github.com/username/project`
-2. `$ cd project`
+1. `$ git clone https://github.com/mylesmmurphy/gr-homework.git`
+2. `$ cd gr-homework`
 3. `$ npm i`
 
 ## Getting Started
