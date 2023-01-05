@@ -29,3 +29,8 @@ Development Workflow:
 2. Create a feature branch off of development, please name this branch after the feature being added using snake case, i.e. `new-feature-branch`
 3. Once ready, open a PR to merge into development. Follow the naming convention: `Branch-name: Feature Summary`
 4. Once approved, squash and merge changes into development (Note: Due to this being a free tier account, branch protection rules are not actually enforced.)
+
+## Notes
+
+1. After getting a count for each database, we have less than 100k records in each database that need to be analyzed. Because the records are not huge, and there are not too many, we are able to load them all at once into the program and store / analyze them in-memory. If there were a lot more records, we most likely would have needed to batch our comparisons. This would have likely looked like a limit and offset used to query the old DB, and then used `where in` to find the records from that batch in the new DB.
+2. Assumption made that we are only checking for shared columns, since the new DB has a new column named `favorite_flavor`.
