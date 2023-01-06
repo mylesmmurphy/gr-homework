@@ -37,6 +37,7 @@ Development Workflow:
 
 ## Notes
 
-1. After getting a count for each database, I found we have less than 100k records in each database. Because the size and number of records is no huge, we are able to load them all at once into the program and store / analyze them in-memory. If there were a lot more records, we most likely would have needed to batch our comparisons. This would have likely looked like a limit and offset used to query the old DB, and then used `where in` to find the records from that batch in the new DB, and then append those to some append.
+1. After getting a count for each database, I found we have less than 100k records in each database. Because the size and number of records is not huge, we are able to load them all at once into the program and store / analyze them in-memory. If there was a lot more records, we would most likely have needed to do our comparisons in batches. This would have likely looked like a limit and offset used to query the old DB, and then used `where in` to find the records from that batch in the new DB, and then append those to some report, file, DB, etc. where we are keeping track.
 2. Assumption made that we are only checking for shared columns, since the new DB has a new column named `favorite_flavor`.
-3. Program execution time is about ~1 second, and uses around 125mb of memory.
+3. Assumption made that reports with only the impacted record IDs would be sufficient. Missed and corrupted record IDs could be re-ran with an upsert into the new DB. If needed, I could add more details into the reports (for instance, what field is corrupted and the difference between them).
+4. Program execution time is about ~1 second, and uses around 125mb of memory.
