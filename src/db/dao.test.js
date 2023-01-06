@@ -34,7 +34,7 @@ describe('getAllAccounts', () => {
     const accounts = await getAllAccounts(mockClient);
 
     // Assert
-    expect(mockClient.query).toBeCalledWith('SELECT * FROM accounts');
+    expect(mockClient.query).toBeCalledWith('SELECT id, name, email FROM accounts');
     expect(accounts).toEqual(mockData.rows);
   });
 });

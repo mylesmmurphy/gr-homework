@@ -23,7 +23,7 @@ async function getDBClient(config) {
  * @returns Account[]
  */
 async function getAllAccounts(client) {
-  const query = 'SELECT * FROM accounts';
+  const query = 'SELECT id, name, email FROM accounts';
 
   const { rows } = await client.query(query);
 

@@ -1,10 +1,10 @@
 const dao = require('./db/dao');
 const { oldDBConfig, newDBConfig } = require('./db/config');
-const { analyzeAndGenerateReport } = require('./report-service');
+const { auditAccountsAndGenerateReport } = require('./report-service');
 
 jest.mock('./db/dao');
 
-describe('analyzeAndGenerateReport', () => {
+describe('auditAccountsAndGenerateReport', () => {
   it('should connect to databases, run queries', async () => {
     // Arrange
     const oldClient = 'oldClient'; // Fake instance of a client
@@ -20,7 +20,7 @@ describe('analyzeAndGenerateReport', () => {
       .mockResolvedValueOnce(newRecords);
 
     // Act
-    await analyzeAndGenerateReport();
+    await auditAccountsAndGenerateReport();
 
     // Assert
     expect(dao.getDBClient).toBeCalledWith(oldDBConfig);
