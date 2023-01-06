@@ -1,5 +1,6 @@
 const dao = require('./db/dao');
 const { oldDBConfig, newDBConfig } = require('./db/config');
+const { accountsArrayToObject, findMissedAndCorruptedAccounts, findNewAccounts } = require('./helpers/accounts-auditer');
 
 /**
  * Main service for generating a report
@@ -12,12 +13,20 @@ async function analyzeAndGenerateReport() {
   const newClient = await dao.getDBClient(newDBConfig);
 
   // Grab all of the records from each database
-  // Note: Could be ran in paralle using Promise.all to increase performance
-  const oldAccounts = await dao.getAllAccounts(oldClient);
-  const newAccounts = await dao.getAllAccounts(newClient);
+  // Note: Could be ran in parallel using Promise.all to increase performance
+  const oldDBAccountsArray = await dao.getAllAccounts(oldClient);
+  const newDBAccountsArray = await dao.getAllAccounts(newClient);
 
-  console.log(oldAccounts[0]);
-  console.log(newAccounts[0]);
+  // Convert array objects to objects for faster lookups
+  const oldDBAccounts = accountsArrayToObject(oldDBAccountsArray);
+  const newDBAccounts = accountsArrayToObject(newDBAccountsArray);
+
+  const { missedAccounts, corruptedAccounts } = findMissedAndCorruptedAccounts(oldDBAccounts, newDBAccounts);
+  const newAccounts = findNewAccounts(oldDBAccounts, newDBAccounts);
+
+  console.log('Missed account', missedAccounts[0]);
+  console.log('Corrupted account', corruptedAccounts[0]);
+  console.log('New account', newAccounts[0]);
 }
 
 module.exports = {
