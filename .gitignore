@@ -3,3 +3,12 @@ node_modules
 
 # Environment holding secrets
 .env
+
+# Jest Coverage Reports
+coverage
+
+# Data Audit Reports
+reports/*
+
+# DS Store
+**/.DS_Store
