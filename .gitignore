@@ -9,6 +9,7 @@ coverage
 
 # Data Audit Reports
 reports/*
+!reports/.gitkeep
 
 # DS Store
 **/.DS_Store
