@@ -4,7 +4,7 @@ const { getDBClient, getAllAccounts } = require('./dao');
 jest.mock('pg');
 
 describe('getDBClient', () => {
-  it('should create and returns a PG client', async () => {
+  it('should create and return a PG client', async () => {
     // Arrange
     const config = {
       host: 'localhost',
@@ -24,17 +24,17 @@ describe('getDBClient', () => {
 });
 
 describe('getAllAccounts', () => {
-  it('should return all Account records', async () => {
+  it('should call the correct query and return all Account records', async () => {
     // Arrange
-    const mockData = { rows: [] };
-    const queryMock = jest.fn(() => Promise.resolve(mockData));
-    const client = { query: queryMock }; // Client dependency injection for testing
+    const mockClient = new pg.Client();
+    const mockData = { rows: [{ id: '1' }] };
+    mockClient.query = jest.fn().mockResolvedValue(mockData);
 
     // Act
-    const accounts = await getAllAccounts(client);
+    const accounts = await getAllAccounts(mockClient);
 
     // Assert
-    expect(queryMock).toBeCalledWith('SELECT * FROM accounts');
+    expect(mockClient.query).toBeCalledWith('SELECT * FROM accounts');
     expect(accounts).toEqual(mockData.rows);
   });
 });
