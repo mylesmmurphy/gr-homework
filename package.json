@@ -13,13 +13,12 @@
   "author": "Myles Murphy",
   "license": "ISC",
   "dependencies": {
-    "deep-equal": "^2.2.0",
     "dotenv": "^16.0.3",
-    "eslint-plugin-jest": "^27.2.0",
     "pg": "^8.8.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
+    "eslint-plugin-jest": "^27.2.0",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
