@@ -5,6 +5,7 @@ const {
   findMissedAndCorruptedAccounts,
   findNewAccounts,
 } = require('./helpers/accounts-auditer');
+const { generateReport } = require('./helpers/csv-generator');
 
 /**
  * Main service for generating a report
@@ -31,9 +32,9 @@ async function auditAccountsAndGenerateReport() {
   const { missedAccounts, corruptedAccounts } = findMissedAndCorruptedAccounts(oldDBAccounts, newDBAccounts);
   const newAccounts = findNewAccounts(oldDBAccounts, newDBAccounts);
 
-  console.log('Missed account', missedAccounts[0]);
-  console.log('Corrupted account', corruptedAccounts[0]);
-  console.log('New account', newAccounts[0]);
+  generateReport('missed-accounts', missedAccounts);
+  generateReport('corrupted-accounts', corruptedAccounts);
+  generateReport('new-accounts', newAccounts);
 }
 
 module.exports = {
