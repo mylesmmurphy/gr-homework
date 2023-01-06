@@ -77,4 +77,5 @@ module.exports = {
   accountsArrayToObject,
   findMissedAndCorruptedAccounts,
   findNewAccounts,
+  isAccountsEqual,
 };
