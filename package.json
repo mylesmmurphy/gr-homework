@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "test": "jest",
     "db-old:up": "docker run -p 5432:5432 guaranteedrate/homework-pre-migration:1607545060-a7085621",
     "db-new:up": "docker run -p 5433:5432 guaranteedrate/homework-post-migration:1607545060-a7085621",
     "db:up": "(npm run db-old:up &) && (npm run db-new:up &)"
@@ -13,11 +14,14 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "eslint-plugin-jest": "^27.2.0",
     "pg": "^8.8.0"
   },
   "devDependencies": {
+    "@jest/globals": "^29.3.1",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^29.3.1"
   }
 }

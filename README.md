@@ -7,6 +7,7 @@ The goal of this project is to identify missing, corrupted, and new records with
 
 * Node.js & npm
 * [Docker](https://docs.docker.com/get-docker/)
+* [Nvm](https://github.com/nvm-sh/nvm) (optional) Uses `.nvmrc` to set Node version
 
 
 ## Installation
@@ -17,10 +18,13 @@ The goal of this project is to identify missing, corrupted, and new records with
 
 ## Getting Started
 
-1. Launch Docker
+1. Launch Docker.
 2. Run `npm run db:up`. This will pull and start both databases locally on Docker.
 3. Copy `sample.env` into a `.env` and enter the proper credentials.
 4. Run `npm run start` to generate a report.
+
+## Testing
+1. Run `npm test`
 
 ## Adding to the Project
 
