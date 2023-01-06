@@ -24,7 +24,9 @@ async function getDBClient(config) {
  */
 async function getAllAccounts(client) {
   const query = 'SELECT * FROM accounts';
+
   const { rows } = await client.query(query);
+
   return rows;
 }
 
