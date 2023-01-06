@@ -6,11 +6,11 @@ const path = './reports';
 
 /**
  * Writes an array of IDs to a CSV file to be easily read
- * @param {*} type The type of report we're writing, ex. Missed, corrupted, or new accounts
- * @param {*} ids Array of IDs to be written
+ * @param {string} type The type of report we're writing, ex. Missed, corrupted, or new accounts
+ * @param {string[]} ids Array of IDs to be written
  */
 function generateReport(type, ids) {
-  // Each value needs to be it's own array to be a new row entry
+  // Each value needs to be it's own array to be a row
   const wrappedValues = ids.map((id) => [id]);
 
   const params = [

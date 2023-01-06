@@ -21,7 +21,8 @@ The goal of this project is to identify missing, corrupted, and new records with
 1. Launch Docker.
 2. Run `npm run db:up`. This will pull and start both databases locally on Docker.
 3. Copy `sample.env` into a `.env` and enter the proper credentials.
-4. Run `npm run start` to generate a report.
+4. Run `npm run start` to generate reports.
+5. Reports are saved in the `reports` folder. Reports are saved as a CSV with the IDs of the impacted records.
 
 ## Testing
 1. Run `npm test`
