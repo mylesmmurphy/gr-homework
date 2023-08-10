@@ -2,6 +2,8 @@
 
 The goal of this project is to identify missing, corrupted, and new records within a migrated database.
 
+This projected was completed as part of the Guaranteed Rate interview process.
+
 ---
 ## Requirements
 
